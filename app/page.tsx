@@ -75,6 +75,7 @@ export default function Home() {
 	const [searchType, setSearchType] = useState<"start" | "end">("start")
 	const [fuelIndex, setFuelIndex] = useState("7")
 	const [hide, setHide] = useState(false)
+	const [hideSearch, setHideSearch] = useState(false)
 	const mapRef = useRef<MapRef>(null);
 
 	useEffect(() => {
@@ -166,12 +167,13 @@ export default function Home() {
 					<MapControls showLocate/>
 					<div className="absolute w-full">
 						<RadioGroup value={radioButtonState} onValueChange={setRadioButtonState} className="flex flex-col lg:flex-row gap-2 p-4">
-							<FieldLabel className="w-[42.5%]" htmlFor="starting">
+							<FieldLabel className={`${hideSearch ? "hidden lg:block" : "block"} w-[42.5%]`} htmlFor="starting">
 								<Field 
 									orientation="vertical" 
 									className={`border border-neutral-300 rounded-lg p-4 ${radioButtonState === "start"
 										? "border-[#0AC4E0] bg-blue-50 shadow-md"
-										: "border-neutral-300 bg-neutral-50"} relative space-y-3
+										: "border-neutral-300 bg-neutral-50"}
+										relative space-y-3
 									`}>
 									<div className="flex gap-3">
 										<RadioGroupItem 
@@ -216,7 +218,7 @@ export default function Home() {
 									/>
 								</Field>
 							</FieldLabel>
-							<FieldLabel className="w-[42.5%]" htmlFor="destination">
+							<FieldLabel className={`${hideSearch ? "hidden lg:block" : "block"} w-[42.5%]`} htmlFor="destination">
 								<Field orientation="vertical" className={`border border-neutral-300 rounded-lg p-4 ${radioButtonState === "end"
 									? "border-blue-600 bg-blue-50 shadow-md"
 									: "border-neutral-300 bg-neutral-50"} relative space-y-3
@@ -264,8 +266,11 @@ export default function Home() {
 								</Field>
 							</FieldLabel>
 							
-							<div className="w-[15%] lg:flex items-center justify-center">
+							<div className="w-full lg:w-[15%] flex flex-row lg:flex items-center justify-center gap-4">
 								<MatrixDialog fuelIndex={fuelIndex} matrix={FAREMATRIX} />
+								<Button className="lg:hidden" variant="outline" onClick={() => setHideSearch(!hideSearch)}>
+									{hideSearch ? "Show Search" : "Hide Search"}
+								</Button>
 							</div>
 						</RadioGroup>
 					</div>
