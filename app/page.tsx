@@ -83,12 +83,11 @@ export default function Home() {
 	useEffect(() => {
 		if ((startSearch === "" || startSearch === "Current Location") && searchType === "start") {
 			setStartSearchResults(null);
-			console.log("Cleared start search results");
 		}
 		if (endSearch === "" && searchType === "end") setEndSearchResults(null);
 		const debounceTimer = setTimeout(() => {
-			if (startSearch && startSearch != "Current Location" && searchType === "start") fetchSearchResults(startSearch, "start", setStartSearchResults, setEndSearchResults, setIsLoading);
-			if (endSearch && searchType === "end") fetchSearchResults(endSearch, "end", setStartSearchResults, setEndSearchResults, setIsLoading);
+			if (startSearch && startSearch != "Current Location" && searchType === "start") fetchSearchResults(startSearch.concat(" Tagum"), "start", setStartSearchResults, setEndSearchResults, setIsLoading);
+			if (endSearch && searchType === "end") fetchSearchResults(endSearch.concat(" Tagum"), "end", setStartSearchResults, setEndSearchResults, setIsLoading);
 		}, 500);
 
 		return () => clearTimeout(debounceTimer);
