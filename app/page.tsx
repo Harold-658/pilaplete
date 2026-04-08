@@ -340,8 +340,8 @@ export default function Home() {
 							</MapMarker>
 
 							{/* Button Toggler */}
-							<Button className="absolute left-0 bottom-0 lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" size="icon-lg" onClick={() => setHide(!hide)}>
-								{hide ? <ChevronLeft className="hidden lg:block" color="#FFFFFF"/> : <ChevronRight className="hidden lg:block" color="#FFFFFF"/>}
+							<Button className="absolute left-0 bottom-0 lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" onClick={() => setHide(!hide)}>
+								{hide ? <><ChevronLeft className="hidden lg:block" color="#FFFFFF"/>Show Fare</> : <><ChevronRight className="hidden lg:block" color="#FFFFFF"/>Hide Fare</>}
 								{hide ? <ChevronUp className="block lg:hidden" color="#FFFFFF"/> : <ChevronDown className="block lg:hidden" color="#FFFFFF"/>}
 							</Button>
 						</Map>
@@ -356,7 +356,7 @@ export default function Home() {
 				
 				<ResizableHandle withHandle />
 				
-				<ResizablePanel defaultSize={hide ? "0" : isLargeScreen ? "30" : "50" } style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}} key={hide ? "hide" :isLargeScreen ? "h" : "v"}>
+				<ResizablePanel defaultSize={hide ? "0" : isLargeScreen ? "30" : "50" } maxSize={"80"} style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}} key={hide ? "hide" :isLargeScreen ? "h" : "v"}>
 					<div className="flex flex-col gap-2 h-full">
 						<div className="flex flex-col gap-2 p-4 bg-white ">
 							<div className="flex items-center gap-2">
