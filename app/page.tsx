@@ -11,7 +11,7 @@ import {
 	MapControls,
 	MapRef,
 } from "@/components/ui/map";
-import { Loader2, Locate, LocateFixed, MapPin, Fuel, ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from "lucide-react";
+import { Loader2, Locate, LocateFixed, MapPin, Fuel, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Search, SearchSlashIcon, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { computeFare, fetchSearchResults, getUserLocation } from "./utils";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -28,6 +28,7 @@ import { ClickHandler } from "./components/click-handler";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Spinner } from "@/components/ui/spinner";
+import GuideDialog from "./components/guide-dialog";
 
 interface PointData {
 	name: string;
@@ -273,11 +274,13 @@ export default function Home() {
 								</Field>
 							</FieldLabel>
 							
-							<div className="w-full lg:w-[15%] flex flex-row lg:flex items-center justify-center gap-4">
+							<div className="w-full lg:w-[15%] flex flex-row lg:flex-col lg:flex items-center justify-center gap-4">
 								<MatrixDialog fuelIndex={fuelIndex} matrix={FAREMATRIX} />
 								<Button className="lg:hidden" variant="outline" onClick={() => setHideSearch(!hideSearch)}>
-									{hideSearch ? "Show Search" : "Hide Search"}
+									{hideSearch ? <Search/> : <EyeOff />}
+									{hideSearch ? "Search Location" : "Hide Search"}
 								</Button>
+								<GuideDialog/>
 							</div>
 						</RadioGroup>
 					</div>

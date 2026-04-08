@@ -1,4 +1,4 @@
-import { Card, CardFooter } from "@/components/ui/card"
+import { Card, CardDescription, CardFooter } from "@/components/ui/card"
 import { Clock, Route } from "lucide-react";
 import { formatDistance, formatDuration, formatFare } from "../utils";
 
@@ -35,6 +35,7 @@ export const FareCard = ({ isActive, isFastest, route, index, setSelectedIndex }
                     )}
                 </div>
             </div>
+            {!isActive && <CardDescription className="text-sm text-gray-500">Click to view route on map.</CardDescription>}
 
             <div className="space-x-4 grid grid-cols-2">
                 <div className="rounded-xl bg-gray-50 p-4 flex items-center justify-between">
