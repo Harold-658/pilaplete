@@ -255,9 +255,6 @@ export default function Home() {
 													/>
 													<p className="text-sm text-gray-500">Powered by photon</p>
 												</div>
-												<Button className="bg-[#0B2D72]" onClick={() => getUserLocation(setCenter, setStart, setStartSearch, setMarker, setIsLoadingLocation)}>
-													{isLoadingLocation ? <Spinner /> : <Locate />} My Location
-												</Button>
 											</div>
 		
 											<SearchResults
