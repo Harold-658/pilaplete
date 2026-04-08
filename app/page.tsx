@@ -187,17 +187,20 @@ export default function Home() {
 										</Label>
 									</div>
 
-									<div className="flex items-center gap-2">
+									<div className="flex gap-2">
 										<LocateFixed size={35}/>
-										<Input
-											className="border-neutral-950 bg-white"
-											type="search"
-											placeholder="Starting Point..."
-											value={startSearch}
-											onChange={(e) => {setStartSearch(e.target.value); setSearchType("start")}}
-											onFocus={() => setRadioButtonState("start")}
-											onClick={() => setRadioButtonState("start")}
-										/>
+										<div className="w-full">
+											<Input
+												className="border-neutral-950 bg-white"
+												type="search"
+												placeholder="Starting Point..."
+												value={startSearch}
+												onChange={(e) => {setStartSearch(e.target.value); setSearchType("start")}}
+												onFocus={() => setRadioButtonState("start")}
+												onClick={() => setRadioButtonState("start")}
+											/>
+											<p className="text-sm text-gray-500">Powered by photon</p>
+										</div>
 										<Button className="bg-[#0B2D72]" onClick={() => getUserLocation(setCenter, setStart, setStartSearch, setMarker)}>
 											<Locate/>My Location
 										</Button>
@@ -237,15 +240,18 @@ export default function Home() {
 
 									<Field orientation="horizontal">
 										<MapPin/>
-										<Input
-											className="border-neutral-950 bg-white"
-											type="search"
-											placeholder="Destination..."
-											value={endSearch}
-											onChange={(e) => {setEndSearch(e.target.value); setSearchType("end")}}
-											onClick={() => setRadioButtonState("end")}
-											onFocus={() => setRadioButtonState("end")}
-										/>
+										<div className="w-full">
+											<Input
+												className="border-neutral-950 bg-white"
+												type="search"
+												placeholder="Destination..."
+												value={endSearch}
+												onChange={(e) => {setEndSearch(e.target.value); setSearchType("end")}}
+												onClick={() => setRadioButtonState("end")}
+												onFocus={() => setRadioButtonState("end")}
+											/>
+											<p className="text-sm text-gray-500">Powered by photon</p>
+										</div>
 									</Field>
 
 									<SearchResults

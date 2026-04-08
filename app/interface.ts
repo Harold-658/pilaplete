@@ -25,3 +25,11 @@ export interface GeometryProps {
     type: string,
     coordinates: number[]
 }
+
+export interface RouteData {
+	coordinates: [number, number][];
+	duration: number; // seconds
+	distance: number; // meters
+	fare: number;
+	discounted: number;
+}
