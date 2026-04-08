@@ -33,3 +33,14 @@ export interface RouteData {
 	fare: number;
 	discounted: number;
 }
+
+export interface PointData {
+	name: string;
+	lng: number,
+	lat: number
+}
+
+export interface MarkerData {
+	lng: number;
+	lat: number;
+}

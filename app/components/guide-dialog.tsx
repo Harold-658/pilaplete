@@ -64,7 +64,7 @@ export default function GuideDialog() {
                 </Button>
             </DialogTrigger>
 
-            <DialogContent className="max-w-[90%]! lg:max-w-[30%]! h-[80vh]" style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}}>
+            <DialogContent className="max-w-[90%]! lg:max-w-[30%]! h-[70vh]" style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}}>
                 {/* Header */}
                 <div className="bg-linear-to-br bg-[#0B2D72] px-6 pt-6 pb-5">
                     <div className="flex items-center gap-2 mb-3">
@@ -119,7 +119,7 @@ export default function GuideDialog() {
                 <DialogFooter>
                     <Button
                         onClick={() => setOpen(false)}
-                        className="inline-flex items-center gap-2 px-5 py-2 bg-[#0B2D72] text-white text-sm font-semibold"
+                        className="flex items-center gap-2 px-5 py-2 bg-[#0B2D72] text-white text-sm font-semibold"
                     >
                         Got it
                     </Button>
