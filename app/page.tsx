@@ -278,11 +278,14 @@ export default function Home() {
 										</Field>
 									</FieldLabel>
 									
-									<div className="w-full lg:w-[15%] flex flex-row lg:flex-col lg:flex items-center justify-center gap-2">
+									<div className="w-full lg:w-[15%] flex flex-row flex-wrap lg:flex-col lg:flex items-center justify-center gap-2">
 										<MatrixDialog fuelIndex={fuelIndex} matrix={FAREMATRIX} />
 										<Button className="lg:hidden" variant="outline" onClick={() => setHideSearch(!hideSearch)}>
 											{hideSearch ? <Search/> : <EyeOff />}
 											{hideSearch ? "Search Location" : "Hide Search"}
+										</Button>
+										<Button className="lg:hidden bg-[#0B2D72]" onClick={() => setHide(!hide)}>
+											{hide ? <><ChevronUp className="block lg:hidden" color="#FFFFFF"/>Show Fare</> : <><ChevronDown className="block lg:hidden" color="#FFFFFF"/>Hide Fare</>}
 										</Button>
 										<GuideDialog/>
 									</div>
@@ -340,9 +343,8 @@ export default function Home() {
 							</MapMarker>
 
 							{/* Button Toggler */}
-							<Button className="absolute left-0 bottom-0 lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" onClick={() => setHide(!hide)}>
+							<Button className="absolute lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" onClick={() => setHide(!hide)}>
 								{hide ? <><ChevronLeft className="hidden lg:block" color="#FFFFFF"/>Show Fare</> : <><ChevronRight className="hidden lg:block" color="#FFFFFF"/>Hide Fare</>}
-								{hide ? <ChevronUp className="block lg:hidden" color="#FFFFFF"/> : <ChevronDown className="block lg:hidden" color="#FFFFFF"/>}
 							</Button>
 						</Map>
 
