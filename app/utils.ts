@@ -70,10 +70,13 @@ export function getUserLocation(
     setCenter: (center: { lng: number, lat: number }) => void,
     setStart: (location: { name: string, lng: number, lat: number }) => void,
     setStartSearch: (search: string) => void,
-    setMarker: (marker: any) => void
+    setMarker: (marker: any) => void,
+    setIsLoadingLocation: (isLoading: boolean) => void
 ) {
+    setIsLoadingLocation(true);
     if (!navigator.geolocation) {
         alert("Geolocation is not supported by your browser.");
+        setIsLoadingLocation(false);
         return;
     }
 
@@ -84,8 +87,10 @@ export function getUserLocation(
             setStart({ name: "Current Location", lng: longitude, lat: latitude });
             setStartSearch("Current Location");
             setMarker(null)
+            setIsLoadingLocation(false);
         },
         (error) => {
+            setIsLoadingLocation(false);
             if (error.code === error.PERMISSION_DENIED) {
                 showLocationPermissionModal();
             } else if (error.code === error.TIMEOUT) {

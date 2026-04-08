@@ -27,6 +27,7 @@ import { CenterTracker } from "./components/center-tracker";
 import { ClickHandler } from "./components/click-handler";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Spinner } from "@/components/ui/spinner";
 
 interface PointData {
 	name: string;
@@ -60,23 +61,24 @@ interface MarkerData {
 }
 
 export default function Home() {
-	const [start, setStart] = useState<PointData>({ name: "Starting Point", lng: 125.81198, lat: 7.449292 })
-	const [end, setEnd] = useState<PointData>({ name: "Destination", lng: 125.82647, lat: 7.44079 })
+	const [start, setStart] = useState<PointData>({ name: "Gaisano Mall of Tagum", lng: 125.81198, lat: 7.449292 })
+	const [end, setEnd] = useState<PointData>({ name: "New City Hall of Tagum", lng: 125.82647, lat: 7.44079 })
 	const [center, setCenter] = useState<{lng: number, lat: number}>({ lng: (start.lng + end.lng) / 2, lat: (start.lat + end.lat) / 2 });
 	const [marker, setMarker] = useState<MarkerData | null>(null);
 	const [routes, setRoutes] = useState<RouteData[]>([]);
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const [radioButtonState, setRadioButtonState] = useState("start")
-	const [startSearch, setStartSearch] = useState("")
+	const [startSearch, setStartSearch] = useState(start.name)
 	const [startSearchResults, setStartSearchResults] = useState<GeoJSONProps | null>(null)
-	const [endSearch, setEndSearch] = useState("")
+	const [endSearch, setEndSearch] = useState(end.name)
 	const [endSearchResults, setEndSearchResults] = useState<GeoJSONProps | null>(null)
 	const [searchType, setSearchType] = useState<"start" | "end">("start")
 	const [fuelIndex, setFuelIndex] = useState("7")
 	const [hide, setHide] = useState(false)
 	const [hideSearch, setHideSearch] = useState(false)
 	const mapRef = useRef<MapRef>(null);
+	const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
 	useEffect(() => {
 		if ((startSearch === "" || startSearch === "Current Location") && searchType === "start") {
@@ -201,8 +203,8 @@ export default function Home() {
 											/>
 											<p className="text-sm text-gray-500">Powered by photon</p>
 										</div>
-										<Button className="bg-[#0B2D72]" onClick={() => getUserLocation(setCenter, setStart, setStartSearch, setMarker)}>
-											<Locate/>My Location
+										<Button className="bg-[#0B2D72]" onClick={() => getUserLocation(setCenter, setStart, setStartSearch, setMarker, setIsLoadingLocation)}>
+											{isLoadingLocation ? <Spinner /> : <Locate />} My Location
 										</Button>
 									</div>
 									<SearchResults
