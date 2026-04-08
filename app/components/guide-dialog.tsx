@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const steps = [
   {
@@ -63,12 +64,12 @@ export default function GuideDialog() {
                 </Button>
             </DialogTrigger>
 
-            <DialogContent className="max-w-[90%]! lg:max-w-[30%]!" style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}}>
+            <DialogContent className="max-w-[90%]! lg:max-w-[30%]! h-[80vh]" style={{ fontFamily: "Helvetica Neue, Arial, Helvetica, sans-serif"}}>
                 {/* Header */}
                 <div className="bg-linear-to-br bg-[#0B2D72] px-6 pt-6 pb-5">
                     <div className="flex items-center gap-2 mb-3">
                         <Navigation className="w-4 h-4 text-blue-400" />
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-blue-400">
+                        <span className="text-md font-bold tracking-widest uppercase text-blue-400">
                             Pilaplete Navigation Guide
                         </span>
                     </div>
@@ -81,7 +82,7 @@ export default function GuideDialog() {
                 </div>
 
                 {/* Steps */}
-                <div className="bg-white px-6 py-5 flex flex-col gap-4">
+                <div className="bg-white px-6 py-5 flex flex-col gap-4 overflow-scroll">
                     {steps.map((s, i) => {
                         const Icon = s.icon;
                         return (
@@ -89,7 +90,7 @@ export default function GuideDialog() {
                             key={i}
                             className={`flex gap-4 items-start border-l-4 ${s.borderAccent} pl-4 py-1`}
                         >
-                            <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${s.iconBg}`}>
+                            <div className={`rounded-xl flex items-center justify-center shrink-0 ${s.iconBg}`}>
                                 <Icon className="w-4 h-4" />
                             </div>
                             <div className="flex-1 min-w-0">
