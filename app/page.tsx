@@ -343,7 +343,7 @@ export default function Home() {
 							</MapMarker>
 
 							{/* Button Toggler */}
-							<Button className="absolute lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" onClick={() => setHide(!hide)}>
+							<Button className="absolute hidden lg:left-auto lg:right-0 lg:top-1/2 bg-[#0B2D72]" onClick={() => setHide(!hide)}>
 								{hide ? <><ChevronLeft className="hidden lg:block" color="#FFFFFF"/>Show Fare</> : <><ChevronRight className="hidden lg:block" color="#FFFFFF"/>Hide Fare</>}
 							</Button>
 						</Map>
